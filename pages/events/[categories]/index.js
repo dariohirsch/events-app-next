@@ -23,7 +23,7 @@ const EventsPerCityPage = ({ data, pageName }) => {
 export default EventsPerCityPage
 
 export async function getStaticPaths() {
-	const { events_categories } = await import("/data/data.json")
+	const { events_categories } = await import("/tmp/data/data.json")
 
 	const allPaths = events_categories.map((event) => {
 		return {
@@ -41,7 +41,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 	const id = context.params.categories
-	const { allEvents } = await import("/data/data.json")
+	const { allEvents } = await import("/tmp/data/data.json")
 
 	const data = allEvents.filter((event) => event.city === id)
 
